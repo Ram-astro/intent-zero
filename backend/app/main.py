@@ -10,7 +10,11 @@ app = FastAPI(title="INTENT ZERO API", version="0.1.0",
               description="Local-first natural-language workflow planning and deterministic structure validation.")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_ORIGIN, "http://localhost:5173"],
+    allow_origins=[
+        FRONTEND_ORIGIN.rstrip("/"),
+        "https://intent-zero.vercel.app",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
